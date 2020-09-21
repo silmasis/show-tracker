@@ -18,14 +18,16 @@ mongoose.connection.on('connected', () => {
     console.log('Mongoose is connected!!!!')
 });
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
+
 const showRouter = require('./routes/shows');
 const usersRouter = require('./routes/users');
 
 app.use('/shows', showRouter);
 app.use('/users', usersRouter);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+;
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static( '../client/build' ));
