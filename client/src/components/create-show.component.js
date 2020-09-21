@@ -111,11 +111,12 @@ export default class CreateShow extends Component {
 
                     <div className="form-group">
                         <label>Site: </label>
-                        <select 
+                        <select
                             required
                             className="form-control"
                             value={this.state.site}
                             onChange={this.onChangeSite}>
+                            <option value="defaultValue">Choose a Site</option>
                             <option value="Crunchyroll">Crunchyroll</option>
                             <option value="Netflix">Netflix</option>
                             <option value="Funimation">Funimation</option>
