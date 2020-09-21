@@ -4,22 +4,17 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 
+const config = require("./config/key");
+
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true }
-);
-
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log('MongoDB database connection established successfully')
-});
+const connect = mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB database connection established successfully'))
+    .catch(err => console.log(err));
 
 const showRouter = require('./routes/shows');
 const usersRouter = require('./routes/users');

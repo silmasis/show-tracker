@@ -20,7 +20,7 @@
     "start": "node server.js",
     "backend": "nodemon server.js",
     "frontend": "npm run front --prefix client",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && run build prefix client",
+    "heroku-postbuild": "npm install --prefix client && run build prefix client",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "client": "cd client && npm start"
